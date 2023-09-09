@@ -4,11 +4,9 @@ import { useState } from "react";
 export default function AddUser(props) {
   const [name, setName] = useState<string>("");
   const [age, setAge] = useState<number | string>(0);
-  const [error, setError] = useState<string>("");
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(props);
 
     let errorMessage = "";
 
@@ -21,15 +19,16 @@ export default function AddUser(props) {
     }
 
     if (errorMessage) {
-      setError(errorMessage);
+      props.onError(errorMessage);
       return;
     } else {
+      props.onError("");
       props.onSavedUser(name, age);
     }
 
     setName("");
     setAge("");
-    setError("");
+    ("");
   }
 
   return (
