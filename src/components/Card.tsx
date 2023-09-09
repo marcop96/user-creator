@@ -3,7 +3,7 @@ export default function Card(props) {
   return (
     <div>
       {props.userList.map((user, index) => (
-        <div className="alert alert-success" key={index}>
+        <div className="alert alert-success m-2" key={index}>
           <span>
             {user.name} - {user.age}
           </span>

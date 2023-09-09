@@ -13,21 +13,21 @@ export default function App() {
 
   console.log(userList);
   return (
-    <div className="">
-      <div className="flex justify-center">
+    <div className="flex flex-col justify-center">
+      <header className="w-1/2 self-center">
         <h2 className="text-white text-2xl font-bold underline underline-offset-4">
           User generator
         </h2>
-      </div>
+      </header>
 
-      <div className="grid gap-6 mb-6 md:grid-cols-1 w-2/4 mx-auto content-center">
-        <div>
+      <main className="w-1/2 self-center">
+        <div className="">
           <AddUser
             onSavedUser={(name: string, age: number) => createUser(name, age)}
           />
+          <Card userList={userList} />
         </div>
-      </div>
-      <Card userList={userList} />
+      </main>
     </div>
   );
 }
