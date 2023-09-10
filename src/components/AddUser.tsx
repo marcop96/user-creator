@@ -31,7 +31,6 @@ export default function AddUser(props: {
     ("");
   }
 
-  console.log(errorMessage);
   return (
     <div>
       <form onSubmit={handleSubmit}>
