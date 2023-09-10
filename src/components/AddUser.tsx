@@ -1,14 +1,15 @@
-import Button from "./button";
+import Button from "./Button";
 import { useState } from "react";
-
-export default function AddUser(props) {
+export default function AddUser(props: {
+  onError: (message: string) => void;
+  onSavedUser: (name: string, age: number) => void;
+}) {
   const [name, setName] = useState<string>("");
   const [age, setAge] = useState<number | string>(0);
+  let errorMessage = "";
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
-    let errorMessage = "";
 
     if (name.trim().length === 0 && +age <= 0) {
       errorMessage = "Name must not be empty, and Age must be greater than 0";
@@ -17,7 +18,6 @@ export default function AddUser(props) {
     } else if (+age <= 0) {
       errorMessage = "Age must be greater than 0";
     }
-
     if (errorMessage) {
       props.onError(errorMessage);
       return;
@@ -31,6 +31,7 @@ export default function AddUser(props) {
     ("");
   }
 
+  console.log(errorMessage);
   return (
     <div>
       <form onSubmit={handleSubmit}>

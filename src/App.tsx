@@ -1,10 +1,8 @@
 import AddUser from "./components/AddUser";
 import { useState } from "react";
 import Card from "./components/Card";
-interface User {
-  name: string;
-  age: number | string;
-}
+import { User } from "./types/User";
+import ErrorModal from "./components/ErrorModal";
 export default function App() {
   const [userList, setUserList] = useState<User[]>([]);
   const [error, setError] = useState<string>("");
@@ -12,7 +10,7 @@ export default function App() {
   function errorHandler(message: string) {
     setError(message);
   }
-  function createUser(name, age) {
+  function createUser(name: string, age: number) {
     setUserList([...userList, { name, age }]);
   }
 
@@ -30,10 +28,15 @@ export default function App() {
             onError={errorHandler}
             onSavedUser={(name: string, age: number) => createUser(name, age)}
           />
-          <Card userList={userList} />
+          {!error ? (
+            <>
+              <Card userList={userList} />
+            </>
+          ) : (
+            <ErrorModal error={error} />
+          )}
         </div>
       </main>
-      <p>{error}</p>
     </div>
   );
 }

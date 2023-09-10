@@ -1,4 +1,4 @@
-export default function ErrorModal(props) {
+export default function ErrorModal(props: { error: string }) {
   return (
     <div className="alert alert-warning">
       <svg

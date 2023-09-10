@@ -1,4 +1,5 @@
-export default function Card(props) {
+import { User } from "../types/User";
+export default function Card(props: { userList: User[] }) {
   return (
     <div>
       {props.userList.map((user, index) => (
