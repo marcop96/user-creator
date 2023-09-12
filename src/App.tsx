@@ -13,6 +13,8 @@ export default function App() {
     setError(message);
     if (message) {
       setModalVisible(true);
+    } else {
+      setModalVisible(false);
     }
   }
   function createUser(name: string, age: number) {
@@ -38,7 +40,11 @@ export default function App() {
               <Card userList={userList} />
             </>
           ) : (
-            <ErrorModal error={error} />
+            <ErrorModal
+              error={error}
+              setModalVisible={setModalVisible}
+              modalVisible={modalVisible}
+            />
           )}
         </div>
       </main>

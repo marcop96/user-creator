@@ -1,20 +1,17 @@
 import ErrorCard from "./ErrorCard";
 import classes from "./ErrorModal.module.css";
 import Button from "./Button";
-import { useState } from "react";
 function ErrorModal(props) {
   console.log(props);
-  const [modalVisible, setModalVisible] = useState(true);
 
   const closeModal = () => {
-    setModalVisible(false);
+    props.setModalVisible(false);
   };
 
-  if (!modalVisible) {
+  if (!props.modalVisible) {
     return null; // Change this to return null instead of rendering the modal
   }
-
-  if (modalVisible) {
+  if (props.modalVisible) {
     return (
       <div>
         <div className={classes.backdrop} />
