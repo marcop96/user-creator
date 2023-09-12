@@ -1,4 +1,4 @@
-import Button from "./Button";
+import FormButton from "./FormButton";
 import { useState } from "react";
 export default function AddUser(props: {
   onError: (message: string) => void;
@@ -57,7 +57,7 @@ export default function AddUser(props: {
           placeholder="27"
           required
         />
-        <Button buttonType="submit" buttonText={"Add User"} />
+        <FormButton buttonType="submit" buttonText={"Add User"} />
       </form>
     </div>
   );

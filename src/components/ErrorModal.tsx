@@ -1,20 +1,36 @@
-export default function ErrorModal(props: { error: string }) {
-  return (
-    <div className="alert alert-warning">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="stroke-current shrink-0 h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-        />
-      </svg>
-      <span>{props.error}</span>
-    </div>
-  );
+import ErrorCard from "./ErrorCard";
+import classes from "./ErrorModal.module.css";
+import Button from "./Button";
+import { useState } from "react";
+function ErrorModal(props) {
+  console.log(props);
+  const [modalVisible, setModalVisible] = useState(true);
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  if (!modalVisible) {
+    return null; // Change this to return null instead of rendering the modal
+  }
+
+  if (modalVisible) {
+    return (
+      <div>
+        <div className={classes.backdrop} />
+        <ErrorCard className={classes.modal}>
+          <header className={classes.header}>
+            <h2>{props.title}</h2>
+          </header>
+          <div className={classes.content}>
+            <p>{props.error}</p>
+          </div>
+          <footer className={classes.actions}>
+            <Button onClick={closeModal}>Okay</Button>
+          </footer>
+        </ErrorCard>
+      </div>
+    );
+  }
 }
+export default ErrorModal;

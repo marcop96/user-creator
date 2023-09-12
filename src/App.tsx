@@ -4,11 +4,16 @@ import Card from "./components/Card";
 import { User } from "./types/User";
 import ErrorModal from "./components/ErrorModal";
 export default function App() {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const [userList, setUserList] = useState<User[]>([]);
   const [error, setError] = useState<string>("");
 
   function errorHandler(message: string) {
     setError(message);
+    if (message) {
+      setModalVisible(true);
+    }
   }
   function createUser(name: string, age: number) {
     setUserList([...userList, { name, age }]);
