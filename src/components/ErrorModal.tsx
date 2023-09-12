@@ -2,8 +2,6 @@ import ErrorCard from "./ErrorCard";
 import classes from "./ErrorModal.module.css";
 import Button from "./Button";
 function ErrorModal(props) {
-  console.log(props);
-
   const closeModal = () => {
     props.setModalVisible(false);
   };
